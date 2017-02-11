@@ -13,6 +13,8 @@ module.exports = function phase(done) {
     }
   }));
 
+  this.enable('trust proxy');
+
   this.use(cookies());
   this.use(bodyParser.json());
   this.use(bodyParser.urlencoded({ extended: false }));
