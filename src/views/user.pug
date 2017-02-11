@@ -1,0 +1,18 @@
+extends layout
+
+block title
+  title='User - Client Site'
+
+block content
+  section.mainContent.clearfix
+    .container
+      .row
+        .col-xs-6
+          form.row(action=loginUrl, method='POST', role='form')
+            .col-xs-12
+              .page-header
+                h4 Login Success!
+              pre
+                code
+                  = JSON.stringify(user, null, 2)
+              a(class='button', href=sessionEndpoint) View Session in Authorization Server

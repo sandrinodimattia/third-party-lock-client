@@ -1,0 +1,26 @@
+extends layout
+
+block title
+  title='Client Site'
+
+block content
+  section.mainContent.clearfix
+    .container
+      .row
+        .col-xs-6
+          form.row(action=loginUrl, method='POST', role='form')
+            .col-xs-12
+              .page-header
+                h4 Login
+            .form-group.col-sm-12.col-xs-12
+              label Username
+              input.form-control(type='text', name='username')
+            .form-group.col-sm-12.col-xs-12
+              label Password
+              input.form-control(type='text', name='password')
+            .form-group.col-sm-12.col-xs-12
+              label XSRF Token
+              input.form-control(type='text', name='xsrf_token', value=xsrfToken)
+            .form-group
+              .col-md-offset-10.col-md-2.col-sm-offset-9.col-sm-3
+                button.btn.btn-primary.btn-block(type='submit') Submit
