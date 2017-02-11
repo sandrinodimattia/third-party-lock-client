@@ -18,17 +18,17 @@ module.exports = function phase() {
   this.get('/callback', (req, res) => {
     logger.info(req.query, 'Callback');
 
-    // Validate the state.
-    if (req.query.state !== req.cookies.state) {
-      return res.render('error', {
-        error: 'Invalid state'
-      });
-    }
-
     // Error from the authorization server?
     if (req.query.error) {
       return res.render('error', {
         error: req.query.error
+      });
+    }
+
+    // Validate the state.
+    if (req.query.state !== req.cookies.state) {
+      return res.render('error', {
+        error: 'Invalid state'
       });
     }
 

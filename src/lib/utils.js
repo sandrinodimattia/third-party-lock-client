@@ -1,4 +1,5 @@
 const crypto = require('crypto');
+const logger = require('./logger');
 
 /*
  * Generate the login url where we'll be posting the credentials to.
@@ -25,6 +26,9 @@ module.exports.generateXsrfToken = (state, req) => {
     req.headers['user-agent'],
     `${process.env.CLIENT_URL}${req.path}`
   ];
+
+  logger.info(xsrfToken, 'Creating XSRF token.');
+
   return crypto.createHash('sha256')
     .update(xsrfToken.join('|'))
     .digest('base64');
